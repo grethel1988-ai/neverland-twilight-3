@@ -162,13 +162,14 @@ button { font: inherit; cursor: pointer; border: 0; color: inherit; }
 .passage { flex: 0 0 36%; padding: 1em 1.2em; overflow: auto; background: linear-gradient(145deg, rgba(255,249,236,.95), rgba(255,238,205,.92)); color: var(--ink); }
 .passage h3 { color: #78275a; margin-bottom: .4em; font-size: 1.2em; }
 .passage p { line-height: 1.85; font-size: 1.18em; text-indent: 2em; }
-.qcard { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 1.05em 1.35em; gap: .75em; }
-.q-tag { align-self: center; font-size: clamp(13px, .82em, 18px); font-weight: 700; padding: .18em .9em; border-radius: 99px; background: rgba(125,226,209,.22); border: 1px solid var(--mint); color: var(--mint); }
-.q-text { font-family: var(--kai); font-size: clamp(20px, 1.48em, 34px); font-weight: 700; line-height: 1.5; text-align: center; }
+.qcard { flex: 1; min-width: 0; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; padding: 1.05em 1.35em; gap: .75em; }
+.q-tag { align-self: center; flex-shrink: 0; font-size: clamp(13px, .82em, 18px); font-weight: 700; padding: .18em .9em; border-radius: 99px; background: rgba(125,226,209,.22); border: 1px solid var(--mint); color: var(--mint); }
+.q-text { flex-shrink: 0; font-family: var(--kai); font-size: clamp(20px, 1.48em, 34px); font-weight: 700; line-height: 1.5; text-align: center; }
 .opt, .chip, .fill-text, .mrow .lbl, .cat h4, .passage, .passage h3, .passage p { font-family: var(--kai); }
 .opt { font-size: clamp(18px, 1.25em, 28px); }
-.q-area { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: .75em; }
-.q-actions { display: flex; justify-content: center; min-height: 2.3em; }
+.q-area { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; gap: .75em; }
+.q-actions { flex-shrink: 0; display: flex; justify-content: center; min-height: 2.3em; }
+.q-actions:has(#btn-check[hidden]) { display: none; }
 
 /* 選擇題 */
 .opts { display: grid; grid-template-columns: 1fr 1fr; gap: .75em; }
@@ -266,14 +267,20 @@ button { font: inherit; cursor: pointer; border: 0; color: inherit; }
 /* 響應式 */
 @media (max-width: 760px), (max-aspect-ratio: 4/5) {
   :root { --fs: clamp(15px, 3.85vw, 19px); }
+  .screen { padding: 6px 10px; }
+  #scr-quiz { gap: .6vh; }
   .partner-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); width: min(420px, 100%); }
   .pcard { aspect-ratio: 4/3; }
-  .quiz-body { flex-direction: column; }
-  .passage { flex: 0 0 auto; max-height: 22vh; }
-  .passage p { font-size: 1.05em; }
-  .opts { grid-template-columns: 1fr; gap: .48em; }
-  .opt { font-size: clamp(16px, 4vw, 19px); padding: .45em .8em; }
-  .q-text { font-size: clamp(18px, 4.5vw, 22px); }
+  .quiz-body { flex-direction: column; gap: .6vh; }
+  .passage { flex: 0 0 auto; max-height: 16dvh; padding: .55em .85em; }
+  .passage h3 { font-size: 1.02em; margin-bottom: .2em; }
+  .passage p { font-size: 1em; line-height: 1.58; }
+  .opts { grid-template-columns: 1fr; gap: .38em; }
+  .opt { font-size: clamp(15px, 3.9vw, 18px); padding: .36em .7em; border-radius: 11px; }
+  .opt .k { width: 1.65em; height: 1.65em; font-size: .8em; }
+  .q-tag { font-size: 12px; padding: .12em .7em; }
+  .q-text { font-size: clamp(17px, 4.3vw, 20px); line-height: 1.35; }
+  .q-area { gap: .45em; }
   .chip { font-size: clamp(15px, 3.8vw, 18px); padding: .22em .55em; }
   .cat h4 { font-size: clamp(15px, 3.8vw, 18px); padding: .25em .35em; }
   .mrow .lbl { font-size: clamp(15px, 3.9vw, 19px); }
@@ -281,15 +288,17 @@ button { font: inherit; cursor: pointer; border: 0; color: inherit; }
   .fill-text { font-size: clamp(16px, 4vw, 19px); }
   .match-grid { grid-template-columns: 1fr; }
   .cat-row { flex-wrap: wrap; }
-  .qcard { padding: .8em 1em; gap: .5em; }
-  .hud { flex-wrap: wrap; border-radius: 18px; gap: .45em; row-gap: .3em; padding: .3em .7em; justify-content: space-between; }
+  .qcard { padding: .6em .85em; gap: .38em; }
+  .hud { flex-wrap: wrap; border-radius: 16px; gap: .4em; row-gap: .22em; padding: .28em .65em; justify-content: space-between; }
   .hud-stage { display: none; }
   .hud-prog { order: 9; flex-basis: 100%; }
   .gummy { width: 14px; }
   .stand { width: 38vw; bottom: 30vh; }
-  .quiz-vn { min-height: 0; padding: .85em .9em .6em; }
-  .quiz-vn .face { width: 64px; }
-  .quiz-vn .vn-name { left: 6.5em; }
+  .quiz-vn { min-height: 0; padding: .6em .75em .45em; gap: .6em; }
+  .quiz-vn .face { width: 50px; }
+  .quiz-vn .vn-name { left: 4.8em; top: -.82em; font-size: .8em; padding: .1em .8em; }
+  .quiz-vn .vn-text { font-size: .84em; line-height: 1.42; }
+  .quiz-vn .btn-main.small { padding: .42em .95em; font-size: .84em; white-space: nowrap; }
   .title-vn .vn-text { font-size: .78em; }
 }
 @media (max-height: 560px) { .title-vn { display: none; } }

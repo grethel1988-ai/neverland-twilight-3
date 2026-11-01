@@ -17,7 +17,7 @@
 - 完成第三部網站建置：`index.html`、`css/style.css`、`js/game.js`、`js/bank_mc.js`（154題）、`js/bank_drag.js`（35題）、`assets/img/*.webp`
 - 實作拖拉題答案框依字數動態計算寬度（`charEm()` → `--w`），並在放入卡片後透過 `.drop:has(.chip)` 自動貼合包覆
 - 完成配對題 `2 × 2` 對稱排版、填空題單行化微調，以及桌面／行動端響應式字體放大（`clamp`）
-- 目前資源快取版本號：`?v=8`
+- 目前資源快取版本號：`?v=10`
 - 建立 GitHub 遠端公開儲存庫並啟用 GitHub Pages：
   - **GitHub Repo**：`https://github.com/grethel1988-ai/neverland-twilight-3`
   - **GitHub Pages**：`https://grethel1988-ai.github.io/neverland-twilight-3/`
