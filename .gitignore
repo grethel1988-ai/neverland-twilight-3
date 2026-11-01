@@ -1,0 +1,7 @@
+*.docx
+*.tmp
+~$*
+Thumbs.db
+.DS_Store
+scratch/
+__pycache__/
