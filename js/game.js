@@ -398,10 +398,11 @@ function bindChip(c) {
       }
     };
     const up = ev => {
-      window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up);
+      window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up);
       document.querySelectorAll('.drop.hover').forEach(d => d.classList.remove('hover'));
-      ghost.hidden = true; c.style.opacity = '';
+      ghost.hidden = true; ghost.textContent = ''; c.style.opacity = '';
       if (dragging) {
+        if (ev.type === 'pointercancel') return;
         const t = document.elementFromPoint(ev.clientX, ev.clientY);
         const d = t && t.closest('.drop');
         if (d) placeChip(c, d); else if (t && t.closest('.pool')) placeChip(c, null);
@@ -412,7 +413,7 @@ function bindChip(c) {
         if (selChip) selChip.classList.remove('sel'); selChip = c; c.classList.add('sel');
       }
     };
-    window.addEventListener('pointermove', move); window.addEventListener('pointerup', up);
+    window.addEventListener('pointermove', move); window.addEventListener('pointerup', up); window.addEventListener('pointercancel', up);
   });
 }
 document.addEventListener('click', e => {
