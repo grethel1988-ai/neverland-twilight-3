@@ -195,6 +195,7 @@ button { font: inherit; cursor: pointer; border: 0; color: inherit; }
 .chip:hover { transform: translateY(-2px); }
 .chip.sel { outline: 3px solid var(--sakura); transform: scale(1.08); }
 .ghost-chip { position: fixed; z-index: 99; pointer-events: none; transform: translate(-50%, -50%) scale(1.1) rotate(-3deg); box-shadow: 0 10px 25px rgba(0,0,0,.45); }
+.ghost-chip:empty, .ghost-chip[hidden] { display: none !important; }
 .drop {
   width: fit-content; min-width: calc(var(--w, 4em) * 1.12 + 1.4em); min-height: 2.2em;
   border-radius: 10px; border: 2px dashed rgba(255,255,255,.55); background: rgba(255,255,255,.08);

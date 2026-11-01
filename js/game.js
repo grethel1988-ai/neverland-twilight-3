@@ -243,6 +243,7 @@ function setFace(img, mood) {
 
 function renderQuestion(q) {
   S.answered = false; updateHud();
+  const gh = $('#ghost'); if (gh) { gh.hidden = true; gh.style.display = 'none'; gh.textContent = ''; }
   $('#q-tag').textContent = `${IND_NAME[q.ind] || q.ind}｜${TYPE_NAME[q.type]}`;
   $('#q-text').textContent = q.q;
   const ps = $('#passage');
@@ -388,7 +389,7 @@ function bindChip(c) {
     const sx = e.clientX, sy = e.clientY; let dragging = false; const ghost = $('#ghost');
     const move = ev => {
       if (!dragging && Math.hypot(ev.clientX - sx, ev.clientY - sy) > 6) {
-        dragging = true; ghost.textContent = c.textContent; ghost.hidden = false; c.style.opacity = .35;
+        dragging = true; ghost.textContent = c.textContent; ghost.hidden = false; ghost.style.display = 'inline-flex'; c.style.opacity = .35;
       }
       if (dragging) {
         ghost.style.left = ev.clientX + 'px'; ghost.style.top = ev.clientY + 'px';
@@ -400,7 +401,7 @@ function bindChip(c) {
     const up = ev => {
       window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up);
       document.querySelectorAll('.drop.hover').forEach(d => d.classList.remove('hover'));
-      ghost.hidden = true; ghost.textContent = ''; c.style.opacity = '';
+      ghost.hidden = true; ghost.style.display = 'none'; ghost.textContent = ''; c.style.opacity = '';
       if (dragging) {
         if (ev.type === 'pointercancel') return;
         const t = document.elementFromPoint(ev.clientX, ev.clientY);
