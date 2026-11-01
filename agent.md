@@ -18,10 +18,11 @@
 - 實作拖拉題答案框依字數動態計算寬度（`charEm()` → `--w`），並在放入卡片後透過 `.drop:has(.chip)` 自動貼合包覆
 - 完成配對題 `2 × 2` 對稱排版、填空題單行化微調，以及桌面／行動端響應式字體放大（`clamp`）
 - 目前資源快取版本號：`?v=7`
-- 本地 Git 儲存庫初始化並完成首次 commit
+- 建立 GitHub 遠端公開儲存庫並啟用 GitHub Pages：
+  - **GitHub Repo**：`https://github.com/grethel1988-ai/neverland-twilight-3`
+  - **GitHub Pages**：`https://grethel1988-ai.github.io/neverland-twilight-3/`
 
 ## 下一步
-- 建立 GitHub 公開儲存庫（如 `neverland-twilight-3`）並推送部署至 GitHub Pages
 - 實機（平板／手機）跨裝置測試確認版面與觸控拖拉體驗
 
 ## 踩坑與注意事項
