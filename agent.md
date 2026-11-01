@@ -19,6 +19,7 @@
 - 完成配對題 `2 × 2` 對稱排版、填空題單行化微調，以及桌面／行動端響應式字體放大（`clamp`）
 - 修正拖曳殘影 `#ghost` 隱藏權重問題與手機版閱讀題 `.qcard` 選項被底部對話框遮擋問題（加入 `min-height: 0; overflow-y: auto` 與手機版緊湊化配置）
 - 完成 `D:\永無島三部曲\畫面設計參考` 11 張畫面設計圖高解析度拼接總覽（`畫面設計總覽.png`、`畫面設計總覽_無字版.png`）
+- 完成第三部 11 個遊戲畫面擷取（`1600×900`）與高解析度總覽圖拼接（`D:\永無島三部曲\畫面設計總覽-3.png`、`畫面設計總覽.png`、`畫面設計總覽_無字版.png`）
 - 目前資源快取版本號：`?v=10`
 - 建立 GitHub 遠端公開儲存庫並啟用 GitHub Pages：
   - **GitHub Repo**：`https://github.com/grethel1988-ai/neverland-twilight-3`
@@ -34,3 +35,4 @@
 - 配對題與填空題的 `.drop` 若設固定寬度或給 `.chip` 設 `max-width: 100%` 搭配 `white-space: nowrap`，長文字會超出黃色卡片邊框；改由 JS 依字數計算 `--w` 並搭配 `width: max-content` 與 `.drop:has(.chip)` 即可完美貼合
 - 為 `.chip` 設定 `display: inline-flex` 時，會覆蓋瀏覽器預設 `[hidden] { display: none; }` 導致 `#ghost.chip[hidden]` 殘影無法隱藏，必須在全域 CSS 宣告 `[hidden] { display: none !important; }` 並搭配行內 `style="display:none"`
 - 手機版 `.quiz-body` 為 `flex-direction: column` 時，`.qcard` 必須設定 `min-height: 0; overflow-y: auto;`，且選擇題需以 `.q-actions:has(#btn-check[hidden]) { display: none; }` 收合底部空白，避免選項溢出至 `.quiz-vn` 後方
+- 以 Headless Chrome + CDP 自動擷取遊戲對話畫面時，需先清除 `typeText` 的 `setInterval` 計時器再填入完整台詞，避免逐字打字機計時器覆寫文字造成截圖台詞被截斷
